@@ -7,6 +7,7 @@ public class LoginPage extends PageBase
     public LoginPage (WebDriver driver)
     {
         super(driver);
+        driver.get("https://www.reddit.com/account/login/");
     }
 
     By usernameTextBoxLocator = By.id("loginUsername");

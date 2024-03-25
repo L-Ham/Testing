@@ -19,7 +19,7 @@ public class TestBase
     {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://www.reddit.com/account/login/");
+
     }
 
     public void implicitWait(int seconds)
