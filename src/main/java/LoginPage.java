@@ -2,6 +2,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+
+
 public class LoginPage extends PageBase
 {
     public LoginPage (WebDriver driver)
@@ -24,9 +26,6 @@ public class LoginPage extends PageBase
     By logoutButtonLocator = By.xpath("//*[@id=\"logout-list-item\"]/div");
     WebElement userProfile;
 
-    WebElement innerLoginButton;
-
-    WebElement errorInvalidCredentials;
 
     WebElement logoutButton;
     WebElement usernameTextBox;

@@ -61,8 +61,8 @@ public class RegisterPageTest extends TestBase
     {
         registerPage.clearEmailTextbox();
         registerPage.enterNewUserEmail(email);
-        explicitWait(1, registerPage.errorInvalidEmailLocator);
-        Assert.assertTrue(driver.findElement(registerPage.errorInvalidEmailLocator).getText().equals("That email is invalid"));
+        explicitWait(5, registerPage.errorInvalidEmailLocator);
+        Assert.assertTrue(driver.findElement(registerPage.errorInvalidEmailLocator).getText().equals("Please fix your email to continue"));
         Thread.sleep(1000);
     }
 }
