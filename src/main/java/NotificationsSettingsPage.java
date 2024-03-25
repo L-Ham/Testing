@@ -25,7 +25,14 @@ public class NotificationsSettingsPage extends PageBase{
     By postsFollowedCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[2]/span[10]/div/div[2]/div/button");
     By commentsFollowedCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[2]/span[11]/div/div[2]/div/button");
 
-
+// Recommendations Notifications
+    By trendingPostsCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[3]/span[1]/div/div[2]/div/button");
+    By communityRecommendationsCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[3]/span[2]/div/div[2]/div/button");
+    By reRedditCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[3]/span[3]/div/div[2]/div/button");
+    By featuredContentCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[3]/span[4]/div/div[2]/div/button");
+    //Updates Notifications
+    By announcementsCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[4]/span[1]/div/div[2]/div/button");
+    By cakeDayCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[4]/span[2]/div/div[2]/div/button");
     WebElement notificationsTab;
     // Messages Notifications Elements
     WebElement privateMessagesCheckbox;
@@ -45,6 +52,17 @@ public class NotificationsSettingsPage extends PageBase{
     WebElement postsFollowedCheckbox;
     WebElement commentsFollowedCheckbox;
 
+    // Recommendations Notifications Elements
+    WebElement trendingPostsCheckbox;
+    WebElement communityRecommendationsCheckbox;
+    WebElement reRedditCheckbox;
+    WebElement featuredContentCheckbox;
+
+    // Updates Notifications Elements
+    WebElement announcementsCheckbox;
+    WebElement cakeDayCheckbox;
+
+
 
     public void openNotificationsTab()
     {
@@ -52,17 +70,24 @@ public class NotificationsSettingsPage extends PageBase{
         Clicking(notificationsTab);
     }
 
-    public void changeMessagesNotifications()
+    public void changePrivateMessagesNotifications()
     {
         privateMessagesCheckbox = driver.findElement(privateMessagesCheckboxLocator);
         Clicking(privateMessagesCheckbox);
-        chatMessagesCheckbox = driver.findElement(chatMessagesCheckboxLocator);
-        chatRequestsCheckbox = driver.findElement(chatRequestsCheckboxLocator);
-
-        Clicking(chatMessagesCheckbox);
-        Clicking(chatRequestsCheckbox);
-        openNotificationsTab();
     }
+
+    public void changeChatMessagesNotifications()
+    {
+        chatMessagesCheckbox = driver.findElement(chatMessagesCheckboxLocator);
+        Clicking(chatMessagesCheckbox);
+    }
+
+    public void changeChatRequestsNotifications()
+    {
+        chatRequestsCheckbox = driver.findElement(chatRequestsCheckboxLocator);
+        Clicking(chatRequestsCheckbox);
+    }
+
 
     public void changeMentionsNotifications()
     {
@@ -129,6 +154,43 @@ public class NotificationsSettingsPage extends PageBase{
         commentsFollowedCheckbox = driver.findElement(commentsFollowedCheckboxLocator);
         Clicking(commentsFollowedCheckbox);
     }
+
+    public void changeTrendingPostsNotifications()
+    {
+        trendingPostsCheckbox = driver.findElement(trendingPostsCheckboxLocator);
+        Clicking(trendingPostsCheckbox);
+    }
+
+    public void changeCommunityRecommendationsNotifications()
+    {
+        communityRecommendationsCheckbox = driver.findElement(communityRecommendationsCheckboxLocator);
+        Clicking(communityRecommendationsCheckbox);
+    }
+
+    public void changeReRedditNotifications()
+    {
+        reRedditCheckbox = driver.findElement(reRedditCheckboxLocator);
+        Clicking(reRedditCheckbox);
+    }
+
+    public void changeFeaturedContentNotifications()
+    {
+        featuredContentCheckbox = driver.findElement(featuredContentCheckboxLocator);
+        Clicking(featuredContentCheckbox);
+    }
+
+    public void changeAnnouncementsNotifications()
+    {
+        announcementsCheckbox = driver.findElement(announcementsCheckboxLocator);
+        Clicking(announcementsCheckbox);
+    }
+
+    public void changeCakeDayNotifications()
+    {
+        cakeDayCheckbox = driver.findElement(cakeDayCheckboxLocator);
+        Clicking(cakeDayCheckbox);
+    }
+
 
 
 }
