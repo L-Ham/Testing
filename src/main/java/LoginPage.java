@@ -11,6 +11,7 @@ public class LoginPage extends PageBase
     }
 
     By usernameTextBoxLocator = By.id("loginUsername");
+
     By passwordTextBoxLocator = By.id("loginPassword");
 
     By innerLoginButtonLocator = By.xpath("//*[@id=\"login-button\"]");

@@ -24,6 +24,7 @@ public class TestBase
 
     public void implicitWait(int seconds)
     {
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
     }
 
@@ -31,6 +32,10 @@ public class TestBase
     {
         new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+
+
+
+
 
     @AfterTest
     public void quit()
