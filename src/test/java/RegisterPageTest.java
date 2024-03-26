@@ -77,20 +77,18 @@ public class RegisterPageTest extends TestBase
     }
 
    @Test (priority = 5)
-    public void userAgreementAndPrivacyPolicy() throws InterruptedException {
+    public void userAgreementAndPrivacyPolicy(){
         String Main = driver.getWindowHandle();
         registerPage.clickUserAgreement();
         implicitWait(5);
-        Thread.sleep(5000);
         driver.switchTo().window(driver.getWindowHandles().toArray()[1].toString());
         Assert.assertTrue(driver.getCurrentUrl().contains("https://www.redditinc.com/policies/user-agreement"));
         driver.switchTo().window(Main);
         registerPage.clickPrivacyPolicy();
         implicitWait(5);
-        Thread.sleep(5000);
         driver.switchTo().window(driver.getWindowHandles().toArray()[2].toString());
         Assert.assertTrue(driver.getCurrentUrl().contains("https://www.reddit.com/policies/privacy-policy"));
-        driver.switchTo().window(driver.getWindowHandles().toArray()[0].toString());
+        driver.switchTo().window(Main);
 
     }
 

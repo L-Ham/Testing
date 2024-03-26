@@ -14,6 +14,11 @@ public class TestBase
 {
     protected WebDriver driver;
 
+    String signUpURL = "https://www.reddit.com/account/register/";
+    String loginURL = "https://www.reddit.com/account/login/";
+    String recoverUsernameURL = "https://accounts.reddit.com/username";
+    String recoverPasswordURL = "https://accounts.reddit.com/password";
+
     @BeforeTest
     public void setup()
     {
