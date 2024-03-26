@@ -70,7 +70,7 @@ public class LoginPageTest extends TestBase{
         Assert.assertTrue(driver.getCurrentUrl().contains("https://accounts.google.com/"));
         driver.close();
         driver.switchTo().window(MainHandle);
-        driver.navigate().to("https://www.reddit.com/account/register/");
+        driver.navigate().to("https://www.reddit.com/account/login/");
     }
 
     @Test (priority = 4)
@@ -83,6 +83,7 @@ public class LoginPageTest extends TestBase{
         loginPage.clickRecoverPassword();
         implicitWait(5);
         Assert.assertTrue(driver.getCurrentUrl().contains("https://www.reddit.com/password/"));
+        driver.navigate().to("https://www.reddit.com/account/login/");
     }
 
    @Test (priority = 5)

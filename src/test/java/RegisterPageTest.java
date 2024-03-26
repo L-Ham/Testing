@@ -69,10 +69,11 @@ public class RegisterPageTest extends TestBase
     @Test (priority = 4, dataProvider = "getInValidData")
     public void invalidRegisterEmailCases(String email) throws InterruptedException
     {
+        implicitWait(5);
         registerPage.clearEmailTextbox();
         registerPage.enterNewUserEmail(email);
-        explicitWait(5, registerPage.errorInvalidEmailLocator);
-        Thread.sleep(2000);
+        Thread.sleep(3000);
+        //explicitWait(5, registerPage.errorInvalidEmailLocator);
         Assert.assertTrue(driver.findElement(registerPage.errorInvalidEmailLocator).getText().equals("That email is invalid"));
     }
 
