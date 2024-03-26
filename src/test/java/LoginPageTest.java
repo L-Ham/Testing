@@ -61,4 +61,49 @@ public class LoginPageTest extends TestBase{
         Assert.assertTrue(driver.findElement(loginPage.errorInvalidCredentialsLocator).getText().equals("Incorrect username or password"));
     }
 
+    @Test (priority = 3)
+    public void googleButtonTest() throws InterruptedException
+    {
+        String MainHandle = loginPage.clickGoogleButton();
+        implicitWait(5);
+        Thread.sleep(2000);
+        Assert.assertTrue(driver.getCurrentUrl().contains("https://accounts.google.com/"));
+        driver.close();
+        driver.switchTo().window(MainHandle);
+        driver.navigate().to("https://www.reddit.com/account/register/");
+    }
+
+    @Test (priority = 4)
+    public void recoverUsernameAndPasswordTests()
+    {
+        loginPage.clickRecoverUsername();
+        implicitWait(5);
+        Assert.assertTrue(driver.getCurrentUrl().contains("https://www.reddit.com/username/"));
+        driver.navigate().to("https://www.reddit.com/account/login/");
+        loginPage.clickRecoverPassword();
+        implicitWait(5);
+        Assert.assertTrue(driver.getCurrentUrl().contains("https://www.reddit.com/password/"));
+    }
+
+   @Test (priority = 5)
+    public void signUpButtonTest()
+    {
+        loginPage.clickSignUpButton();
+        implicitWait(5);
+        Assert.assertTrue(driver.getCurrentUrl().contains("https://www.reddit.com/account/register/"));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
