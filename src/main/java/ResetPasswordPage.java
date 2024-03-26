@@ -46,6 +46,14 @@ public class ResetPasswordPage extends PageBase
         emailTextbox.sendKeys(email);
     }
 
+    public void clearEmailAndUsername()
+    {
+        emailTextbox = driver.findElement(emailTextboxLocator);
+        emailTextbox.clear();
+        usernameTextbox = driver.findElement(usernameTextboxLocator);
+        usernameTextbox.clear();
+    }
+
     public void clickResetPasswordButton()
     {
         resetPasswordButton = driver.findElement(resetPasswordButtonLocator);

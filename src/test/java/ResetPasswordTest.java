@@ -21,12 +21,15 @@ public class ResetPasswordTest extends TestBase
         resetPasswordPage.clickResetPasswordButton();
         explicitWait(5, resetPasswordPage.successMessageLocator);
         Assert.assertTrue(driver.findElement(resetPasswordPage.successMessageLocator).getText().equals("Thanks! If your Reddit username and email address match, you'll get an email with a link to reset your password shortly."));
+        driver.navigate().to(recoverPasswordURL);
+        resetPasswordPage.clearEmailAndUsername();
     }
 
 
     @Test(priority = 2)
-    public void invalidResetPasswordTestCases()
-    {
+    public void invalidResetPasswordTestCases() throws InterruptedException {
+        implicitWait(5);
+        Thread.sleep(2000);
         resetPasswordPage.enterUsername("Ill_Initial_3945");
         resetPasswordPage.enterEmail("usseinhadidy1gil.com");
         resetPasswordPage.clickResetPasswordButton();
