@@ -1,6 +1,5 @@
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 public class SubredditPageTest  extends TestBase {
     private SubredditPage subredditPage;
@@ -29,5 +28,31 @@ public class SubredditPageTest  extends TestBase {
         subredditPage.clickSaveDraftButton();
         Thread.sleep(5000);
         loginPage.backToLogin();
+    }
+
+    @Test
+    public void filterPostTest() throws InterruptedException{
+        loginPage.login("Ill_Initial_3945", "/m4!2QHj!saysm4");
+        Thread.sleep(5000);
+        subredditPage.openSubreddit("https://www.reddit.com/r/AmItheAsshole/");
+        Thread.sleep(3000);
+        subredditPage.setPostFilter("Top");
+        Thread.sleep(3000);
+        Assert.assertTrue(driver.getCurrentUrl().contains("top"));
+        subredditPage.setPostFilter("New");
+        Thread.sleep(3000);
+        Assert.assertTrue(driver.getCurrentUrl().contains("new"));
+        subredditPage.setPostFilter("Rising");
+        Thread.sleep(3000);
+        Assert.assertTrue(driver.getCurrentUrl().contains("rising"));
+        subredditPage.setPostFilter("Hot");
+        Thread.sleep(3000);
+        Assert.assertTrue(driver.getCurrentUrl().contains("hot"));
+        subredditPage.setPostView("Compact");
+        Thread.sleep(3000);
+        Assert.assertTrue(driver.getCurrentUrl().contains("compactView"));
+        subredditPage.setPostView("Card");
+        Thread.sleep(3000);
+        Assert.assertTrue(driver.getCurrentUrl().contains("cardView"));
     }
 }

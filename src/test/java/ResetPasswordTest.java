@@ -13,7 +13,7 @@ public class ResetPasswordTest extends TestBase
         driver.get(recoverPasswordURL);
     }
 
-    @Test
+    @Test (priority = 1)
     public void validResetPasswordTestCases()
     {
         resetPasswordPage.enterUsername("Ill_Initial_3945");
@@ -23,7 +23,7 @@ public class ResetPasswordTest extends TestBase
         Assert.assertTrue(driver.findElement(resetPasswordPage.successMessageLocator).getText().equals("Thanks! If your Reddit username and email address match, you'll get an email with a link to reset your password shortly."));
     }
 
-    @Test
+    @Test (priority = 2)
     public void invalidResetPasswordTestCases()
     {
         resetPasswordPage.enterUsername("Ill_Initial_3945");
@@ -33,7 +33,7 @@ public class ResetPasswordTest extends TestBase
         Assert.assertTrue(driver.findElement(resetPasswordPage.errorInvalidEmailLocator).getText().equals("Please fix your email to continue"));
     }
 
-    @Test
+    @Test (priority = 3)
     public void testHyperlinks()
     {
         String Main = driver.getWindowHandle();
