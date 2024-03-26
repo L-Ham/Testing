@@ -18,7 +18,8 @@ public class SubredditPage extends PageBase {
 
     By postFilterLocator = By.xpath("//*[@id=\"main-content\"]/div[1]/shreddit-async-loader/div/div/shreddit-sort-dropdown");
 By postViewLocator = By.xpath("//*[@id=\"main-content\"]/div[1]/shreddit-async-loader/div/shreddit-layout-event-setter/shreddit-sort-dropdown");
-    By postFilterOptionLocator;
+By notificationButtonLocator = By.xpath("/html/body/shreddit-app/dsa-transparency-modal-provider/report-flow-provider/div/div[1]/div[1]/section/div/div[2]/shreddit-subreddit-header-buttons//div/shreddit-notification-frequency-control//faceplate-dropdown-menu/button");
+By postFilterOptionLocator;
     By postViewOptionLocator;
 WebElement createPostButton;
     WebElement postTitle;
@@ -29,6 +30,7 @@ WebElement createPostButton;
 
     WebElement postFilter;
     WebElement postView;
+    WebElement notificationButton;
 
     public void openSubreddit(String subredditURL)
     {
@@ -104,6 +106,12 @@ WebElement createPostButton;
         WebElement postViewOption = driver.findElement(postViewOptionLocator);
         Clicking(postViewOption);
 
+    }
+
+    public void clickNotificationButton()
+    {
+        notificationButton = driver.findElement(notificationButtonLocator);
+        notificationButton.click();
     }
 
 }

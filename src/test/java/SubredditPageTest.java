@@ -55,4 +55,14 @@ public class SubredditPageTest  extends TestBase {
         Thread.sleep(3000);
         Assert.assertTrue(driver.getCurrentUrl().contains("cardView"));
     }
+
+    @Test
+    public void clickNotificationTest() throws InterruptedException{
+        loginPage.login("Ill_Initial_3945", "/m4!2QHj!saysm4");
+        Thread.sleep(5000);
+        subredditPage.openSubreddit("https://www.reddit.com/r/AmItheAsshole/");
+        Thread.sleep(3000);
+        subredditPage.clickNotificationButton();
+        Thread.sleep(3000);
+    }
 }
