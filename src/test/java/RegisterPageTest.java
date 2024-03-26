@@ -10,6 +10,7 @@ public class RegisterPageTest extends TestBase
     @BeforeTest
     public void setUp()
     {
+        driver.manage().deleteAllCookies();
         registerPage = new RegisterPage(driver);
         driver.get("https://www.reddit.com/account/register/");
     }
@@ -28,16 +29,18 @@ public class RegisterPageTest extends TestBase
                 };
     }
 
-  //  @Test (priority = 1)
-//    public void googleButtonTest()
-//    {
-//        registerPage.clickGoogleButton();
-//        implicitWait(5);
-//        Assert.assertTrue(driver.getCurrentUrl().contains("https://accounts.google.com/ServiceLogin"));
-//        driver.navigate().to("https://www.reddit.com/account/register/");
-//    }
+    @Test (priority = 1)
+    public void googleButtonTest() throws InterruptedException
+    {
+        String MainHandle = registerPage.clickGoogleButton();
+        implicitWait(5);
+        Thread.sleep(2000);
+        Assert.assertTrue(driver.getCurrentUrl().contains("https://accounts.google.com/"));
+        driver.switchTo().window(MainHandle);
+        driver.navigate().to("https://www.reddit.com/account/register/");
+   }
 
-    @Test (priority = 1, dataProvider = "getValidData")
+    @Test (priority = 2, dataProvider = "getValidData")
     public void validRegisterTestCases(String email, String username, String password)
     {
         registerPage.enterNewUserEmail(email);
@@ -46,7 +49,7 @@ public class RegisterPageTest extends TestBase
         implicitWait(5);
         driver.navigate().to("https://www.reddit.com/account/register/");
     }
-    @Test (priority = 2)
+    @Test (priority = 3)
     public void invalidAlreadyTakenUser()
     {
         registerPage.enterNewUserEmail("husseinhadidy1@gmail.com");
@@ -56,7 +59,7 @@ public class RegisterPageTest extends TestBase
         Assert.assertTrue(driver.findElement(registerPage.errorUsernameAlreadyTaken).getText().equals("That username is already taken"));
         driver.navigate().to("https://www.reddit.com/account/register/");
     }
-    @Test (priority = 3, dataProvider = "getInValidData")
+    @Test (priority = 4, dataProvider = "getInValidData")
     public void invalidRegisterEmailCases(String email) throws InterruptedException
     {
         registerPage.clearEmailTextbox();
@@ -65,6 +68,38 @@ public class RegisterPageTest extends TestBase
         Assert.assertTrue(driver.findElement(registerPage.errorInvalidEmailLocator).getText().equals("Please fix your email to continue"));
         Thread.sleep(1000);
     }
+
+   @Test (priority = 5)
+    public void userAgreementAndPrivacyPolicy() throws InterruptedException {
+        String Main = driver.getWindowHandle();
+        registerPage.clickUserAgreement();
+        implicitWait(5);
+        Thread.sleep(5000);
+        driver.switchTo().window(driver.getWindowHandles().toArray()[1].toString());
+        Assert.assertTrue(driver.getCurrentUrl().contains("https://www.redditinc.com/policies/user-agreement"));
+        driver.switchTo().window(Main);
+        registerPage.clickPrivacyPolicy();
+        implicitWait(5);
+        Thread.sleep(5000);
+        driver.switchTo().window(driver.getWindowHandles().toArray()[2].toString());
+        Assert.assertTrue(driver.getCurrentUrl().contains("https://www.reddit.com/policies/privacy-policy"));
+        driver.switchTo().window(driver.getWindowHandles().toArray()[0].toString());
+
+    }
+
+    @Test (priority = 6)
+    public void goToLogin()
+    {
+        registerPage.clickLoginButton();
+        implicitWait(5);
+        implicitWait(5);
+        Assert.assertTrue(driver.getCurrentUrl().contains("https://www.reddit.com/account/login/"));
+    }
+
+
+
+
+
 }
 
 

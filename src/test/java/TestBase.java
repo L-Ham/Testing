@@ -17,7 +17,7 @@ public class TestBase
     @BeforeTest
     public void setup()
     {
-        driver = new ChromeDriver();
+        driver = new EdgeDriver();
         driver.manage().window().maximize();
 
     }
