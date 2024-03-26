@@ -23,11 +23,8 @@ public class ResetPasswordTest extends TestBase
         Assert.assertTrue(driver.findElement(resetPasswordPage.successMessageLocator).getText().equals("Thanks! If your Reddit username and email address match, you'll get an email with a link to reset your password shortly."));
     }
 
-<<<<<<< Updated upstream
-    @Test (priority = 2)
-=======
+
     @Test(priority = 2)
->>>>>>> Stashed changes
     public void invalidResetPasswordTestCases()
     {
         resetPasswordPage.enterUsername("Ill_Initial_3945");
