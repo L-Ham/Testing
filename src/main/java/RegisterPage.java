@@ -30,6 +30,9 @@ public RegisterPage (WebDriver driver)
     By usernameTextBoxLocator = By.id("regUsername");
     By passwordTextBoxLocator = By.id("regPassword");
 
+    By invalidUsernameSizeLocator = By.xpath("/html/body/div[1]/main/div[2]/div/div/div[2]/div[1]/form/fieldset[1]/div");
+
+    By shortPasswordLocator = By.xpath("//*[@id=\"registerPasswordField\"]/div[2]");
     By SignUpButtonLocator = By.xpath("/html/body/div[1]/main/div[2]/div/div/div[3]/button");
 
 
@@ -100,6 +103,12 @@ public RegisterPage (WebDriver driver)
     {
         usernameTextBox = driver.findElement(usernameTextBoxLocator);
         sendText(usernameTextBox, "Ill_Initial_3945");
+    }
+
+    public void clearUsernameTextbox()
+    {
+        usernameTextBox = driver.findElement(usernameTextBoxLocator);
+        usernameTextBox.clear();
     }
 
     public void clearEmailTextbox()

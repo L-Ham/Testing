@@ -36,6 +36,7 @@ public class RegisterPageTest extends TestBase
         implicitWait(5);
         Thread.sleep(2000);
         Assert.assertTrue(driver.getCurrentUrl().contains("https://accounts.google.com/"));
+        driver.close();
         driver.switchTo().window(MainHandle);
         driver.navigate().to("https://www.reddit.com/account/register/");
    }
@@ -50,13 +51,19 @@ public class RegisterPageTest extends TestBase
         driver.navigate().to("https://www.reddit.com/account/register/");
     }
     @Test (priority = 3)
-    public void invalidAlreadyTakenUser()
-    {
+    public void invalidTestCasesRegisteration() throws InterruptedException {
         registerPage.enterNewUserEmail("husseinhadidy1@gmail.com");
         implicitWait(5);
         registerPage.enterAlreadyTakenUsername();
         explicitWait(1, registerPage.errorUsernameAlreadyTaken);
         Assert.assertTrue(driver.findElement(registerPage.errorUsernameAlreadyTaken).getText().equals("That username is already taken"));
+        registerPage.clearUsernameTextbox();
+        registerPage.enterUsernameAndPassword("hd", "ho");
+        Thread.sleep(1000);
+        explicitWait(5, registerPage.invalidUsernameSizeLocator);
+        explicitWait(5, registerPage.shortPasswordLocator);
+        Assert.assertTrue(driver.findElement(registerPage.invalidUsernameSizeLocator).getText().equals("Username must be between 3 and 20 characters"));
+        Assert.assertTrue(driver.findElement(registerPage.shortPasswordLocator).getText().equals("Password must be at least 8 characters long"));
         driver.navigate().to("https://www.reddit.com/account/register/");
     }
     @Test (priority = 4, dataProvider = "getInValidData")
@@ -95,6 +102,8 @@ public class RegisterPageTest extends TestBase
         implicitWait(5);
         Assert.assertTrue(driver.getCurrentUrl().contains("https://www.reddit.com/account/login/"));
     }
+
+
 
 
 
