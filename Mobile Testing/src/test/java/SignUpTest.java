@@ -14,31 +14,30 @@ import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class MobileTests extends TestBase{
-
-
-    LoginScreen loginScreen;
+public class SignUpTest extends TestBase{
+    SignUpScreen signUpScreen;
     @BeforeTest
-    public void loginSetup()
+    public void setSignUpScreenSetup()
     {
-        loginScreen = new LoginScreen(driver);
+        signUpScreen = new SignUpScreen(driver);
     }
 
     @DataProvider
-    public Object[][] loginData() {
+    public Object[][] signUpData() {
         return new Object[][]{
                 {"david", "12345678"},
+                {"abcdefgf@example.com","hihussein", "hussein50"}
         };
     }
 
-    @Test (dataProvider= "loginData" ,priority = 1)
-    public void test1(String userName, String password) throws InterruptedException
+    @Test (dataProvider= "signUpData" ,priority = 1)
+    public void validsignUpCases(String email, String password, String username) throws InterruptedException
     {
-        System.out.println("Application started...");
-        loginScreen.login(userName, password);
-        driver.navigate().back();
-        driver.navigate().back();
-        driver.navigate().back();
+        signUpScreen.signUpStart(email, password);
+        signUpScreen.signContinued(username);
+        signUpScreen.chooseGender("Man");
+        explicitWait(By.xpath(signUpScreen.userProfileXPath));
+        Assert.assertTrue(driver.findElementByXPath(signUpScreen.userProfileXPath).isDisplayed());
         System.out.println("Back to the main screen...");
     }
 

@@ -1,11 +1,10 @@
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
-
+//import sun.jvm.hotspot.utilities.Assert;
 public class LoginScreen extends ScreenBase
 
 {
-
     MobileElement loginButton;
 
     MobileElement username;
@@ -22,9 +21,7 @@ public class LoginScreen extends ScreenBase
     String continueButtonAccessibilityId="Continue";
 
     MobileElement userProfile;
-    String userProfileXPath= "MobileElement profileIcon=driver.findElementByXPath(\"\\t\\n\" +\n" +
-            "\"//android.widget.FrameLayout[@resource-id=\\\"android:id/content\\\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[4]\");\n" +
-            "\n";
+    String userProfileXPath= "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]";
     public LoginScreen(AndroidDriver<MobileElement> driver) {
         super(driver);
     }
@@ -39,10 +36,14 @@ public class LoginScreen extends ScreenBase
         this.password=driver.findElementByXPath(passwordXPath);
         Clicking(this.password);
         sendText(this.password, password);
+        Thread.sleep(2000);
+        boolean isPasswordObscured = !password.equals(this.password.getText());
+        System.out.println("Password is obscured: "+this.password.getText() + " " + isPasswordObscured);
         continueButton=driver.findElementByAccessibilityId(continueButtonAccessibilityId);
         Clicking(continueButton);
         //userProfile=driver.findElementByXPath(userProfileXPath);
     }
+
 
 
 }
