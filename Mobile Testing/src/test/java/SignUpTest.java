@@ -24,29 +24,22 @@ public class SignUpTest extends TestBase{
     }
 
     @DataProvider
-<<<<<<< Updated upstream
-    public Object[][] signUpData() {
-        return new Object[][]{
-                {"david", "12345678"},
-                {"abcdefgf@example.com","hihussein", "hussein50"}
-=======
     public Object[][] validSignUpData()
     {
         return new Object[][]
-        {
-                {"ZiaBash53@gmail.com","hihussein", "ZiaBash53"}
-        };
+                {
+                        {"ZiaBash53@gmail.com","hihussein", "ZiaBash53"}
+                };
     }
     @DataProvider
     public Object[][] invalidSignUpData() {
         return new Object[][]
-        {
-                {"abc","hihuss"},
-                {"abc@","hihussein"},
-                {"abcm","hih@.coussein"},
-                {"@gmail.com","hihussein"}
->>>>>>> Stashed changes
-        };
+                {
+                        {"abc","hihuss"},
+                        {"abc@","hihussein"},
+                        {"abcm","hih@.coussein"},
+                        {"@gmail.com","hihussein"}
+                };
     }
 
     @BeforeGroups("invalidSignUpTests")

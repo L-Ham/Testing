@@ -53,9 +53,9 @@ public class LoginScreenTest extends TestBase{
     @Test (dataProvider= "invalidloginData" ,priority = 2, groups = "invalidSignUpTests")
     public void invalidloginCases(String userName, String password) throws InterruptedException
     {
-         loginScreen.invalidLogin(userName, password);
-         explicitWait(By.xpath(loginScreen.invalidUsernameOrPassword));
-         Assert.assertTrue(driver.findElementByXPath(loginScreen.invalidUsernameOrPassword).isDisplayed());
+        loginScreen.invalidLogin(userName, password);
+        explicitWait(By.xpath(loginScreen.invalidUsernameOrPassword));
+        Assert.assertTrue(driver.findElementByXPath(loginScreen.invalidUsernameOrPassword).isDisplayed());
     }
 
     @DataProvider
