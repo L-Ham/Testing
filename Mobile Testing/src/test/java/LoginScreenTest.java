@@ -1,8 +1,6 @@
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class LoginScreenTest extends TestBase{
     LoginScreen loginScreen;
@@ -13,29 +11,75 @@ public class LoginScreenTest extends TestBase{
     }
 
     @DataProvider
-    public Object[][] loginData() {
+    public Object[][] validloginData() {
         return new Object[][]{
                 {"Marly","1234567890"}
         };
     }
 
-    @Test (dataProvider= "loginData" ,priority = 1)
+    @DataProvider
+    public Object[][] invalidloginData() {
+        return new Object[][]{
+                {"Marly","hihuss"},
+                {"Marly@","hihus"},
+                {"NoNo","ihuss"},
+                {".com","hihsein"}
+        };
+    }
+
+    @DataProvider
+    public Object[][] emailValidloginData() {
+        return new Object[][]{
+                {"husseinhadidy1@outlook.com", "hihussein"}
+        };
+    }
+
+    @BeforeGroups("invalidSignUpTests")
+    public void beforeInvalidSignUpTests() throws InterruptedException
+    {
+        loginScreen.beforeInvalid();
+    }
+    @Test (dataProvider= "validloginData" ,priority = 1)
     public void validoginCases(String userName, String password) throws InterruptedException
     {
+        loginScreen.clickContinueButton();
+        loginScreen.clickOnLoginButton();
         loginScreen.login(userName, password);
+        explicitWait(By.xpath(loginScreen.userProfileXPath));
         Assert.assertTrue(driver.findElementByXPath(loginScreen.userProfileXPath).isDisplayed());
-        //Logic of going back to the main screen
-        System.out.println("Back to the main screen...");
+        loginScreen.logout();
     }
-//
-//    @Test (dataProvider = "inValidLoginData",priority = 2)
-//    public void invalidLoginCases(String userName, String password) throws InterruptedException
-//    {
-//        System.out.println("Application started...");
-//        loginScreen.login(userName, password);
-//        explicitWait(By.xpath(loginScreen.userProfileXPath));
-//        Assert.assertFalse(driver.findElementByXPath(loginScreen.userProfileXPath).isDisplayed());
-//        System.out.println("Back to the main screen...");
-//    }
+
+    @Test (dataProvider= "invalidloginData" ,priority = 2, groups = "invalidSignUpTests")
+    public void invalidloginCases(String userName, String password) throws InterruptedException
+    {
+         loginScreen.invalidLogin(userName, password);
+         explicitWait(By.xpath(loginScreen.invalidUsernameOrPassword));
+         Assert.assertTrue(driver.findElementByXPath(loginScreen.invalidUsernameOrPassword).isDisplayed());
+    }
+
+    @DataProvider
+    public Object[][] forgotpasswordData() {
+        return new Object[][]{
+                {"ziad.wareth@gmail.com"}
+        };
+    }
+    @Test (priority = 3, dataProvider = "forgotpasswordData")
+    public void forgotPassword(String usernameOrEmail) throws InterruptedException
+    {
+        driver.launchApp();
+        loginScreen.forgotPassword(usernameOrEmail);
+    }
+
+    @Test(priority = 4, dataProvider = "emailValidloginData")
+    public void emailLoginCase(String email, String password) throws InterruptedException
+    {
+        driver.launchApp();
+        loginScreen.clickContinueButton();
+        loginScreen.clickOnLoginButton();
+        loginScreen.login(email, password);
+        explicitWait(By.xpath(loginScreen.userProfileXPath));
+        Assert.assertTrue(driver.findElementByXPath(loginScreen.userProfileXPath).isDisplayed());
+    }
 
 }
