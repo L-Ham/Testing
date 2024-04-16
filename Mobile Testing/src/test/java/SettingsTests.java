@@ -41,7 +41,7 @@ public class SettingsTests extends TestBase{
     @DataProvider
     public Object[][] loginData() {
         return new Object[][]{
-               {"davidG@gmail.com", "12345678"},
+               {"MarlyM@gmail.com", "123456789"},
         };
     }
 
@@ -49,57 +49,79 @@ public class SettingsTests extends TestBase{
     @Test (dataProvider= "loginData" ,priority = 1)
     public void updateEmailTest(String email, String password) throws InterruptedException
     {
-        System.out.println("Application started...");
-        loginScreen.login("david", password);
+        loginScreen.clickContinueButton();
+        loginScreen.clickOnLoginButton();
+        loginScreen.login("Marly", password);
         accountSettingsScreen.openAccountSettings();
         accountSettingsScreen.updateEmail(email, password);
-        System.out.println("Back to the main screen...");
+        driver.navigate().back();
+        driver.navigate().back();
+        accountSettingsScreen.closeSidebarButton();
+        loginScreen.logout();
     }
 
-    @Test
+    @Test (priority = 2)
     public void changePasswordTest() throws InterruptedException
     {
-        loginScreen.login("david", "123456789");
+        loginScreen.login("Marly", "123456789");
         accountSettingsScreen.openAccountSettings();
-        accountSettingsScreen.changePassword("123456789", "12345678", "12345678");
+        accountSettingsScreen.changePassword("123456789", "1234567890", "1234567890");
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(accountSettingsScreen.passwordChangedLocator)));
         driver.navigate().back();
+        driver.navigate().back();
+        accountSettingsScreen.closeSidebarButton();
+loginScreen.logout();
 
     }
 
-    @Test
+    @Test (priority = 3)
     public void invalidPasswordChangeTest() throws InterruptedException
     {
-        loginScreen.login("david", "123456789");
+        loginScreen.login("Marly", "1234567890");
         accountSettingsScreen.openAccountSettings();
         accountSettingsScreen.changePassword("12345678", "12345678","12345678");
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(accountSettingsScreen.invalidPasswordLocator)));
+        driver.navigate().back();
+        driver.navigate().back();
+        driver.navigate().back();
+        accountSettingsScreen.closeSidebarButton();
+        loginScreen.logout();
     }
 
-    @Test
+    @Test (priority = 4)
     public void samePasswordChangeTest() throws InterruptedException
     {
-        loginScreen.login("david", "123456789");
+        loginScreen.login("Marly", "1234567890");
         accountSettingsScreen.openAccountSettings();
-        accountSettingsScreen.changePassword("123456789", "123456789", "123456789");
+        accountSettingsScreen.changePassword("1234567890", "1234567890", "1234567890");
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(accountSettingsScreen.samePasswordLocator)));
+        driver.navigate().back();
+        driver.navigate().back();
+        driver.navigate().back();
+        accountSettingsScreen.closeSidebarButton();
+        loginScreen.logout();
     }
 
-    @Test
+    @Test (priority = 5)
     public void manageMessagesNotificationsTest() throws InterruptedException
     {
-        loginScreen.login("david", "12345678");
+        loginScreen.login("Marly", "1234567890");
         accountSettingsScreen.openAccountSettings();
         accountSettingsScreen.manageNotifications();
         accountSettingsScreen.managePrivateMessages();
         accountSettingsScreen.manageChatMessages();
         accountSettingsScreen.manageChatRequests();
+        driver.navigate().back();
+        driver.navigate().back();
+        driver.navigate().back();
+        accountSettingsScreen.closeSidebarButton();
+        loginScreen.logout();
     }
 
-    @Test
+    @Test (priority = 6)
     public void manageActivityNotificationsTest() throws InterruptedException
     {
-        loginScreen.login("david", "12345678");
+        loginScreen.login("Marly", "1234567890");
         accountSettingsScreen.openAccountSettings();
         accountSettingsScreen.manageNotifications();
         accountSettingsScreen.manageMentions();
@@ -108,29 +130,61 @@ public class SettingsTests extends TestBase{
         accountSettingsScreen.manageUpvotesOnComments();
         accountSettingsScreen.manageRepliesToComments();
         accountSettingsScreen.manageNewFollowers();
+        driver.navigate().back();
+        driver.navigate().back();
+        driver.navigate().back();
+        accountSettingsScreen.closeSidebarButton();
+        loginScreen.logout();
 
     }
 
-    @Test
+    @Test (priority = 7)
     public void blockUserTest() throws InterruptedException
     {
-        loginScreen.login("david", "12345678");
+        loginScreen.login("Marly", "1234567890");
         accountSettingsScreen.openAccountSettings();
-        accountSettingsScreen.blockAccount("Soso");
+        accountSettingsScreen.blockAccount("peter");
+        driver.navigate().back();
+        driver.navigate().back();
+        driver.navigate().back();
+        accountSettingsScreen.closeSidebarButton();
+        loginScreen.logout();
     }
 
-    @Test
+    @Test (priority = 8)
     public void unblockUserTest() throws InterruptedException
     {
-        loginScreen.login("david", "12345678");
+        loginScreen.login("Marly", "1234567890");
         accountSettingsScreen.openAccountSettings();
-        accountSettingsScreen.unblockAccount("Soso");
+        accountSettingsScreen.unblockAccount("peter");
+        driver.navigate().back();
+        driver.navigate().back();
+        driver.navigate().back();
+        accountSettingsScreen.closeSidebarButton();
+        loginScreen.logout();
     }
 
-    @Test
+    @Test (priority = 9)
     public void changeGenderTest() throws InterruptedException {
-        loginScreen.login("david", "12345678");
+        loginScreen.login("Marly", "1234567890");
         accountSettingsScreen.openAccountSettings();
         accountSettingsScreen.changeGender("I prefer not to say");
+        driver.navigate().back();
+        driver.navigate().back();
+        accountSettingsScreen.closeSidebarButton();
+        loginScreen.logout();
+    }
+
+    @Test (priority = 10)
+    public void changeLocationTest() throws InterruptedException {
+        loginScreen.clickContinueButton();
+        loginScreen.clickOnLoginButton();
+        loginScreen.login("Marly", "1234567890");
+        accountSettingsScreen.openAccountSettings();
+        accountSettingsScreen.changeLocation("Chile");
+        driver.navigate().back();
+        driver.navigate().back();
+        accountSettingsScreen.closeSidebarButton();
+        loginScreen.logout();
     }
 }

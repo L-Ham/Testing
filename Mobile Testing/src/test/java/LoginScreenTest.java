@@ -67,14 +67,14 @@ public class LoginScreenTest extends TestBase{
     @Test (priority = 3, dataProvider = "forgotpasswordData")
     public void forgotPassword(String usernameOrEmail) throws InterruptedException
     {
-        driver.launchApp();
+        //driver.launchApp();
         loginScreen.forgotPassword(usernameOrEmail);
     }
 
     @Test(priority = 4, dataProvider = "emailValidloginData")
     public void emailLoginCase(String email, String password) throws InterruptedException
     {
-        driver.launchApp();
+        //driver.launchApp();
         loginScreen.clickContinueButton();
         loginScreen.clickOnLoginButton();
         loginScreen.login(email, password);

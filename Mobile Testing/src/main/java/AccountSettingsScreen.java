@@ -2,7 +2,9 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -47,7 +49,9 @@ String unblockButton="//android.widget.Button[@content-desc=\"Unblock\"]";
 
 String changeGenderLocator="account_settings_change_gender_tile";
 String saveGenderButton="//android.view.View[@content-desc=\"Done\"]";
-
+String changeLocationButton="account_settings_location_customization_tile";
+String selectLocationLocator="//android.view.View[@content-desc=\"Select Location\"]";
+String closeSidebarButton= "//android.widget.Button";
     WebDriverWait wait = new WebDriverWait(driver, 10);
 
     public AccountSettingsScreen(AndroidDriver<MobileElement> driver) {
@@ -155,18 +159,37 @@ String saveGenderButton="//android.view.View[@content-desc=\"Done\"]";
     }
 
     public void changeGender(String gender) {
-        Clicking(driver.findElementByAccessibilityId(changeGenderLocator));
+        Clicking(driver.findElementById(changeGenderLocator));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(saveGenderButton)));
         Clicking(driver.findElementByAccessibilityId(gender));
         Clicking(driver.findElementByXPath(saveGenderButton));
     }
 
+    public void changeLocation(String location) {
+        Clicking(driver.findElementByAccessibilityId(changeLocationButton));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(selectLocationLocator)));
+        while (!isLocationVisible(location)) {
+            scrollDown();
+        }
+        Clicking(driver.findElementByAccessibilityId(location));
+    }
+
+    private boolean isLocationVisible(String location) {
+        WebElement locationElement = driver.findElementByAccessibilityId(location);
+        return locationElement.isDisplayed();
+    }
+    private void scrollDown() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0, 250);");
+    }
 
 
-    public void forgotPassword() {
-        Clicking(driver.findElementByAccessibilityId(changePasswordLocator));
-        Clicking(driver.findElementByAccessibilityId(forgotPasswordLocator));
-        Clicking(driver.findElementByXPath(resetPasswordButtonLocator));
+
+
+
+    public void closeSidebarButton()
+    {
+        Clicking(driver.findElementByXPath(closeSidebarButton));
     }
 
 }
