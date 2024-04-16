@@ -8,31 +8,31 @@ public class NotificationsSettingsPage extends PageBase{
     }
     By notificationsTabLocator = By.id("tab-Notifications");
     // Messages Notifications
-    By privateMessagesCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[1]/span[1]/div/div[2]/div/button");
-    By chatMessagesCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[1]/span[2]/div/div[2]/div/button");
-    By chatRequestsCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[1]/span[3]/div/div[2]/div/button");
+    By privateMessagesCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div[2]/div/div/button");
+    By chatMessagesCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/button");
+    By chatRequestsCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[4]/div[2]/div/div/button");
 
     // Activity Notifications
-    By usernameMentionsCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[2]/span[1]/div/div[2]/div/button");
-    By commentsCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[2]/span[2]/div/div[2]/div/button");
-    By upvotesOnPostsCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[2]/span[3]/div/div[2]/div/button");
-    By upvotesOnCommentsCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[2]/span[4]/div/div[2]/div/button");
-    By RepliesToCommentsCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[2]/span[5]/div/div[2]/div/button");
-    By activityOnCommentCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[2]/span[6]/div/div[2]/div/button");
-    By activityOnChatPostsCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[2]/span[7]/div/div[2]/div/button");
-    By newFollowersCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[2]/span[8]/div/div[2]/div/button");
-    By awardsReceivedCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[2]/span[9]/div/div[2]/div/button");
-    By postsFollowedCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[2]/span[10]/div/div[2]/div/button");
-    By commentsFollowedCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[2]/span[11]/div/div[2]/div/button");
+    By usernameMentionsCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[6]/div[2]/div/div/button");
+    By commentsCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[7]/div[2]/div/div/button");
+    By upvotesOnPostsCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[8]/div[2]/div/div/button");
+    By upvotesOnCommentsCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[9]/div[2]/div/div/button");
+    By RepliesToCommentsCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[10]/div[2]/div/div/button");
+    By activityOnCommentCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[11]/div[2]/div/div/button");
+    By activityOnChatPostsCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[12]/div[2]/div/div/button");
+    By newFollowersCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[13]/div[2]/div/div/button");
+    By awardsReceivedCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[14]/div[2]/div/div/button");
+    By postsFollowedCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[15]/div[2]/div/div/button");
+    By commentsFollowedCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[16]/div[2]/div/div/button");
 
 // Recommendations Notifications
-    By trendingPostsCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[3]/span[1]/div/div[2]/div/button");
-    By communityRecommendationsCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[3]/span[2]/div/div[2]/div/button");
-    By reRedditCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[3]/span[3]/div/div[2]/div/button");
-    By featuredContentCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[3]/span[4]/div/div[2]/div/button");
+    By trendingPostsCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[18]/div[2]/div/div/button");
+    By communityRecommendationsCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[19]/div[2]/div/div/button");
+    By reRedditCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[20]/div[2]/div/div/button");
+    By featuredContentCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[21]/div[2]/div/div/button");
     //Updates Notifications
-    By announcementsCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[4]/span[1]/div/div[2]/div/button");
-    By cakeDayCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[4]/span[2]/div/div[2]/div/button");
+    By announcementsCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[23]/div[2]/div/div/button");
+    By cakeDayCheckboxLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[24]/div[2]/div/div/button");
     WebElement notificationsTab;
     // Messages Notifications Elements
     WebElement privateMessagesCheckbox;

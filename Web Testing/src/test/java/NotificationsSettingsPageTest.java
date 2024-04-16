@@ -16,78 +16,78 @@ public class NotificationsSettingsPageTest extends TestBase {
 
     @Test
     public void changeMessagesNotificationsTest() throws InterruptedException {
-        loginPage.login("Ill_Initial_3945", "/m4!2QHj!saysm4");
-        implicitWait(5);
+        loginPage.login("Marly", "1234567890");
+        explicitWait(10, accountSettingsPage.userProfileLocator);
         accountSettingsPage.openSettings();
-        implicitWait(5);
+        explicitWait(10, notificationsSettingsPage.notificationsTabLocator);
         notificationsSettingsPage.openNotificationsTab();
-        implicitWait(5);
+        Thread.sleep(2000);
         notificationsSettingsPage.changePrivateMessagesNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeChatMessagesNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeChatRequestsNotifications();
     }
 
     @Test
     public void changeActivityNotificationsTest() throws InterruptedException {
-        loginPage.login("Ill_Initial_3945", "/m4!2QHj!saysm4");
-        implicitWait(5);
+        loginPage.login("Marly", "1234567890");
+        explicitWait(10, accountSettingsPage.userProfileLocator);
         accountSettingsPage.openSettings();
-        implicitWait(5);
+        explicitWait(10, notificationsSettingsPage.notificationsTabLocator);
         notificationsSettingsPage.openNotificationsTab();
-        implicitWait(5);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeMentionsNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeCommentsNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeUpvotesOnPostsNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeUpvotesOnCommentsNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeRepliesToCommentsNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeActivityOnCommentNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeActivityOnChatPostsNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeNewFollowersNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeAwardsReceivedNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
         notificationsSettingsPage.changePostsFollowedNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeCommentsFollowedNotifications();
     }
 
     @Test
     public void changeRecommendationsNotificationsTest() throws InterruptedException {
-        loginPage.login("Ill_Initial_3945", "/m4!2QHj!saysm4");
-        implicitWait(5);
+        loginPage.login("Marly", "1234567890");
+        explicitWait(10, accountSettingsPage.userProfileLocator);
         accountSettingsPage.openSettings();
-        implicitWait(5);
+        explicitWait(10, notificationsSettingsPage.notificationsTabLocator);
         notificationsSettingsPage.openNotificationsTab();
-        implicitWait(5);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeTrendingPostsNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeCommunityRecommendationsNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeReRedditNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeFeaturedContentNotifications();
     }
 
     @Test
     public void changeUpdatesNotificationsTest() throws InterruptedException {
-        loginPage.login("Ill_Initial_3945", "/m4!2QHj!saysm4");
-        implicitWait(5);
+        loginPage.login("Marly", "1234567890");
+        explicitWait(10, accountSettingsPage.userProfileLocator);
         accountSettingsPage.openSettings();
-        implicitWait(5);
+        explicitWait(10, notificationsSettingsPage.notificationsTabLocator);
         notificationsSettingsPage.openNotificationsTab();
-        implicitWait(5);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeAnnouncementsNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
         notificationsSettingsPage.changeCakeDayNotifications();
-        Thread.sleep(5500);
+        Thread.sleep(2000);
     }
 }
