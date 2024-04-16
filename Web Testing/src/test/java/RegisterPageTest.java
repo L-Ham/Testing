@@ -22,15 +22,16 @@ public class RegisterPageTest extends TestBase
     public Object[][] getValidData() {
         return new Object[][]
                 {
-                        {"sherifH1ad@gmail.com","Sherid643", "hihussein"}
+                        {"sheriHhh@gmail.com","herd643", "hihussein"}
                 };
     }
 
     @DataProvider
-    public Object[][] getRandomUserValidData() {
+    public Object[][] getRandomUserValidData()
+    {
         return new Object[][]
                 {
-                        {"sehsHadiFad@yahoo.com","hihussein"}
+                        {"sehsadia@yahoo.com","hihussein"}
                 };
     }
 

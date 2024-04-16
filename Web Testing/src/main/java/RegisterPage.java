@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Objects;
 
 public class RegisterPage extends PageBase
 {
@@ -92,7 +93,12 @@ public RegisterPage (WebDriver driver)
         usernameTextBox.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         usernameTextBox.sendKeys(Keys.BACK_SPACE);
         sendText(usernameTextBox, username);
-        explicitWait(15, errorUsernameAlreadyTaken);
+        WebElement errorInvalidUsername = driver.findElement(errorUsernameAlreadyTaken);
+        while(!Objects.equals(errorInvalidUsername.getText(), "That username is already taken"))
+        {
+            //Do nothing
+        }
+        Thread.sleep(1000);
         return driver.findElement(errorUsernameAlreadyTaken).getText();
     }
 
