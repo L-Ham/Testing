@@ -16,29 +16,40 @@ public class ProfileSettingsPageTest extends TestBase {
 
     @Test
     public void changeDisplayNameTest() {
-        loginPage.login("Ill_Initial_3945", "/m4!2QHj!saysm4");
-        implicitWait(5);
+        loginPage.login("Marly", "1234567890");
+        explicitWait(10, accountSettingsPage.userProfileLocator);
         accountSettingsPage.openSettings();
-        implicitWait(5);
+        explicitWait(10, profileSettingsPage.profileTabLocator);
         profileSettingsPage.openProfileTab();
-        implicitWait(5);
-        profileSettingsPage.changeDisplayName("Hadidy El Boss");
-        implicitWait(5);
+        implicitWait(10);
+        profileSettingsPage.changeDisplayName("Marlyyyy");
+        explicitWait(10, profileSettingsPage.displayNameTextBoxLocator);
         Assert.assertTrue(driver.findElement(profileSettingsPage.displayNameTextBoxLocator).isDisplayed());
-        implicitWait(5);
+
     }
 
     @Test
     public void changeAboutTest() {
-        loginPage.login("Ill_Initial_3945", "/m4!2QHj!saysm4");
-        implicitWait(5);
+        loginPage.login("Marly", "1234567890");
+        explicitWait(10, accountSettingsPage.userProfileLocator);
         accountSettingsPage.openSettings();
-        implicitWait(5);
+        explicitWait(10, profileSettingsPage.profileTabLocator);
         profileSettingsPage.openProfileTab();
-        implicitWait(5);
-        profileSettingsPage.changeAbout("My name is Hussein el Hadidy, I am a software engineer and I love coding.");
-        implicitWait(5);
+        explicitWait(10, profileSettingsPage.aboutTextboxLocator);
+        profileSettingsPage.changeAbout("My name is Marly, I am a software engineer and I love coding.");
+        explicitWait(10, profileSettingsPage.aboutTextboxLocator);
         Assert.assertTrue(driver.findElement(profileSettingsPage.aboutTextboxLocator).isDisplayed());
-        implicitWait(5);
+
+    }
+
+    @Test
+    public void addCustomURLTest() {
+        loginPage.login("Marly", "1234567890");
+        explicitWait(10, accountSettingsPage.userProfileLocator);
+        accountSettingsPage.openSettings();
+        explicitWait(10, profileSettingsPage.profileTabLocator);
+        profileSettingsPage.openProfileTab();
+        profileSettingsPage.addCustomURL("https://www.linkedin.com/in/marly-kh/", "LinkedIn");
+    
     }
 }
