@@ -27,8 +27,12 @@ By defaultToMarkdowns= By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div
 
 By sortContentButtonLocator = By.id("r17");
 WebElement sortContentButton;
-
 By sortContentLocator;
+
+
+    By globalViewButtonLocator= By.id("r18");
+    WebElement globalView;
+    By globalViewLocator;
 WebElement sortContent;
     public void openFeedTab()
     {
@@ -71,10 +75,11 @@ WebElement sortContent;
         Clicking(driver.findElement(defaultToMarkdowns));
     }
 
-    public void sortContent(String content) {
+    public void sortContent(String content) throws InterruptedException{
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         sortContentButton = driver.findElement(sortContentButtonLocator);
         Clicking(sortContentButton);
+        Thread.sleep(2000);
         if (content.equalsIgnoreCase("Hot"))
         {
             sortContentLocator= By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[7]/div[2]/div/div/div/div/div[2]/button[1]");
@@ -93,6 +98,30 @@ WebElement sortContent;
         }
         wait.until(ExpectedConditions.visibilityOfElementLocated(sortContentLocator));
         Clicking(driver.findElement(sortContentLocator));
+    }
+
+    public void globalView(String view) throws InterruptedException
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        globalView = driver.findElement(globalViewButtonLocator);
+        Clicking(globalView);
+        Thread.sleep(2000);
+        if (view.equalsIgnoreCase("Card"))
+        {
+            globalViewLocator= By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[8]/div[2]/div/div/div/div/div[2]/button[1]");
+        }
+        else if (view.equalsIgnoreCase("Classic"))
+        {
+            globalViewLocator= By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[8]/div[2]/div/div/div/div/div[2]/button[2]");
+        }
+        else
+        {
+            globalViewLocator= By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[8]/div[2]/div/div/div/div/div[2]/button[3]");
+        }
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(globalViewLocator));
+        Clicking(driver.findElement(globalViewLocator));
+
     }
 
 }

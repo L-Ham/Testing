@@ -41,14 +41,29 @@ accountSettingsPage = new AccountSettingsPage(driver);
     }
 
     @Test
-    public void sortContent() {
+    public void sortContent() throws InterruptedException{
         loginPage.login("Marly", "1234567890");
         explicitWait(10, accountSettingsPage.userProfileLocator);
         accountSettingsPage.openSettings();
         explicitWait(10, feedSettingsPage.feedTabLocator);
         feedSettingsPage.openFeedTab();
         explicitWait(10, feedSettingsPage.sortContentButtonLocator);
+        feedSettingsPage.sortContent("New");
         feedSettingsPage.sortContent("Top");
+        feedSettingsPage.sortContent("Rising");
     }
+
+    @Test
+    public void globalView() throws InterruptedException{
+        loginPage.login("Marly", "1234567890");
+        explicitWait(10, accountSettingsPage.userProfileLocator);
+        accountSettingsPage.openSettings();
+        explicitWait(10, feedSettingsPage.feedTabLocator);
+        feedSettingsPage.openFeedTab();
+        feedSettingsPage.globalView("Classic");
+        feedSettingsPage.globalView("Compact");
+    }
+
+
 
 }
