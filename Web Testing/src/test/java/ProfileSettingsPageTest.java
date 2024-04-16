@@ -50,6 +50,6 @@ public class ProfileSettingsPageTest extends TestBase {
         explicitWait(10, profileSettingsPage.profileTabLocator);
         profileSettingsPage.openProfileTab();
         profileSettingsPage.addCustomURL("https://www.linkedin.com/in/marly-kh/", "LinkedIn");
-    
+
     }
 }

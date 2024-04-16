@@ -62,6 +62,7 @@ class AccountSettingsPage extends PageBase
     {
         userProfile = driver.findElement(userProfileLocator);
         Clicking(userProfile);
+        explicitWait(10, settingsButtonLocator);
         settingsButton = driver.findElement(settingsButtonLocator);
         Clicking(settingsButton);
     }
