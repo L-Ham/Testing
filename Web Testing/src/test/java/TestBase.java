@@ -37,11 +37,6 @@ public class TestBase
     {
         new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
-
-
-
-
-
     @AfterTest
     public void quit()
     {

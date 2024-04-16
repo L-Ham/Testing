@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,36 +14,26 @@ public RegisterPage (WebDriver driver)
         super(driver);
     }
 
-    By loginButtonLocator = By.xpath("/html/body/div/main/div[1]/div/div[2]/form/div[4]/a");
-    By googleButtonLocator = By.xpath("/html/body/div/div/div[2]");
+    By registerEmailTextBoxLocator = By.id("regPassword-prevent2");
+    By continueButtonLocator = By.cssSelector("[data-testid='resetpasswordbutton20']");
 
-    By userAgreementLocator = By.xpath("/html/body/div/main/div[1]/div/div[2]/form/p/a[1]");
-
-    By privacyPolicyLocator = By.xpath("/html/body/div/main/div[1]/div/div[2]/form/p/a[2]");
-
-    By registerEmailTextBoxLocator = By.id("regEmail");
-    By continueButtonLocator = By.xpath("/html/body/div/main/div[1]/div/div[2]/form/fieldset[2]/button");
-
-    By errorInvalidEmailLocator = By.xpath("/html/body/div/main/div[1]/div/div[2]/form/fieldset[1]/div");
-
-    By errorUsernameAlreadyTaken = By.xpath("/html/body/div[1]/main/div[2]/div/div/div[2]/div[1]/form/fieldset[1]/div");
+    By errorInvalidEmailLocator = By.cssSelector("[data-testid='email-error']");
+    By errorUsernameAlreadyTaken = By.cssSelector("[data-testid='username-error-message100']");
 
     By usernameTextBoxLocator = By.id("regUsername");
-    By passwordTextBoxLocator = By.id("regPassword");
+    By passwordTextBoxLocator = By.id("regPassword-prevent5");
+
+    By randomUsernameReloadLocator = By.xpath("/html/body/div/div/div/div/div[2]/div[2]/p/a");
+
+    By randomUsernameEntryLocator = By.xpath("/html/body/div/div/div/div/div[2]/div[2]/div/div/a[1]");
 
     By invalidUsernameSizeLocator = By.xpath("/html/body/div[1]/main/div[2]/div/div/div[2]/div[1]/form/fieldset[1]/div");
 
     By shortPasswordLocator = By.xpath("//*[@id=\"registerPasswordField\"]/div[2]");
-    By SignUpButtonLocator = By.xpath("/html/body/div[1]/main/div[2]/div/div/div[3]/button");
+    By SignUpButtonLocator = By.cssSelector("[data-testid='signup-continued-button']");
 
+    By userProfileLocator = By.xpath("//*[@id=\"header-container\"]/header/nav/div[3]/div[2]/button");
 
-
-    WebElement loginButton;
-    WebElement googleButton;
-
-    WebElement userAgreement;
-
-    WebElement privacyPolicy;
 
     WebElement registerEmailTextBox;
 
@@ -54,35 +45,12 @@ public RegisterPage (WebDriver driver)
 
     WebElement SignUpButton;
 
-    public void clickLoginButton()
-    {
-        loginButton = driver.findElement(loginButtonLocator);
-        Clicking(loginButton);
-    }
-
-    public String clickGoogleButton()
-    {
-        // switch to frame of google button first using switchToFrame method
-
-        driver.switchTo().frame(0);
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(googleButtonLocator));
-        String MainWindow = driver.getWindowHandle();
-        googleButton = driver.findElement(googleButtonLocator);
-        Clicking(googleButton);
-        for (String winHandle : driver.getWindowHandles())
-        {
-            if(!winHandle.equals(MainWindow))
-            {
-                driver.switchTo().window(winHandle);
-            }
-        }
-        return MainWindow;
-    }
-
+    WebElement randomUsernameReload;
+    WebElement randomUsernameEntry;
 
     public void enterNewUserEmail(String email)
     {
-
+        explicitWait(10, registerEmailTextBoxLocator);
         registerEmailTextBox = driver.findElement(registerEmailTextBoxLocator);
         sendText(registerEmailTextBox, email);
         continueButton = driver.findElement(continueButtonLocator);
@@ -91,6 +59,7 @@ public RegisterPage (WebDriver driver)
 
     public void enterUsernameAndPassword(String username, String password)
     {
+        explicitWait(10, usernameTextBoxLocator);
         usernameTextBox = driver.findElement(usernameTextBoxLocator);
         passwordTextBox = driver.findElement(passwordTextBoxLocator);
         sendText(usernameTextBox, username);
@@ -99,10 +68,32 @@ public RegisterPage (WebDriver driver)
         Clicking(SignUpButton);
     }
 
-    public void enterAlreadyTakenUsername()
+    public String enterRandomUsernameAndPassword(String password)
     {
+        explicitWait(10, usernameTextBoxLocator);
         usernameTextBox = driver.findElement(usernameTextBoxLocator);
-        sendText(usernameTextBox, "Ill_Initial_3945");
+        passwordTextBox = driver.findElement(passwordTextBoxLocator);
+        randomUsernameReload = driver.findElement(randomUsernameReloadLocator);
+        Clicking(randomUsernameReload);
+        explicitWait(10, randomUsernameEntryLocator);
+        randomUsernameEntry = driver.findElement(randomUsernameEntryLocator);
+        Clicking(randomUsernameEntry);
+        String randomUsername = randomUsernameEntry.getText();
+        sendText(passwordTextBox, password);
+        explicitWait(10, SignUpButtonLocator);
+        SignUpButton = driver.findElement(SignUpButtonLocator);
+        Clicking(SignUpButton);
+        return randomUsername;
+    }
+
+    public String enterAlreadyTakenUsername(String username) throws InterruptedException {
+        explicitWait(10, usernameTextBoxLocator);
+        usernameTextBox = driver.findElement(usernameTextBoxLocator);
+        usernameTextBox.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        usernameTextBox.sendKeys(Keys.BACK_SPACE);
+        sendText(usernameTextBox, username);
+        explicitWait(15, errorUsernameAlreadyTaken);
+        return driver.findElement(errorUsernameAlreadyTaken).getText();
     }
 
     public void clearUsernameTextbox()
@@ -117,17 +108,6 @@ public RegisterPage (WebDriver driver)
         registerEmailTextBox.clear();
     }
 
-    public void clickUserAgreement()
-    {
-        userAgreement = driver.findElement(userAgreementLocator);
-        Clicking(userAgreement);
-    }
-
-    public void clickPrivacyPolicy()
-    {
-        privacyPolicy = driver.findElement(privacyPolicyLocator);
-        Clicking(privacyPolicy);
-    }
 
 
 }
