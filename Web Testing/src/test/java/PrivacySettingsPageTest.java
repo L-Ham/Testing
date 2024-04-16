@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 public class PrivacySettingsPageTest extends TestBase {
-    PrivacySettingsPage privacySettingsPage;
-    AccountSettingsPage accountSettingsPage;
-    LoginPage loginPage;
+    private PrivacySettingsPage privacySettingsPage;
+    private AccountSettingsPage accountSettingsPage;
+   private LoginPage loginPage;
 
 
     @BeforeTest
