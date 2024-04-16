@@ -6,7 +6,7 @@ public class NotificationsSettingsPage extends PageBase{
     {
         super(driver);
     }
-    By notificationsTabLocator = By.xpath("//*[@id=\"AppRouter-main-content\"]/div/div[1]/div/a[5]");
+    By notificationsTabLocator = By.id("tab-Notifications");
     // Messages Notifications
     By privateMessagesCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[1]/span[1]/div/div[2]/div/button");
     By chatMessagesCheckboxLocator = By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[1]/span[2]/div/div[2]/div/button");

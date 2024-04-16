@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -15,11 +16,12 @@ class AccountSettingsPage extends PageBase
         super(driver);
     }
 
-    By userProfileLocator = By.xpath("//*[@id='expand-user-drawer-button']/span/span/span/span/img");
-    By settingsButtonLocator = By.xpath("//*[@id=\"user-drawer-content\"]/ul[3]/faceplate-tracker/li");
-    By verifyEmailButtonLocator = By.xpath("//*[@id=\"AppRouter-main-content\"]/div/div[2]/div[1]/div[1]/div[1]/p/button");
-    By verificationEmailTextLocator = By.xpath("//*[@id=\"SHORTCUT_FOCUSABLE_DIV\"]/div[4]/div/div/div/div[1]/h2");
-    By changeEmailButtonLocator = By.xpath("//*[@id=\"AppRouter-main-content\"]/div/div[2]/div[1]/div[1]/div[2]/div/button");
+    By userProfileLocator = By.xpath("//*[@id=\"header-container\"]/header/nav/div[3]/div[2]/button");
+    By settingsButtonLocator = By.xpath("//*[@id=\"header-container\"]/header/nav/div[3]/div[2]/div/ul[3]/li/a");
+    By changeEmailButtonLocator = By.id("cl1");
+
+    By setPasswordLocator=By.xpath("//*[@id=\"main-container\"]/div[2]/div/div/div/div[1]");
+    By continueToSetPasswordLocator=By.id("generic3");
     By confirmPasswordTextboxLocator = By.xpath("//*[@id=\"SHORTCUT_FOCUSABLE_DIV\"]/div[4]/div/div/div/div[2]/div[1]/input");
     By newEmailTextboxLocator = By.xpath("//*[@id=\"SHORTCUT_FOCUSABLE_DIV\"]/div[4]/div/div/div/div[2]/div[2]/input");
     By saveEmailButtonLocator = By.xpath("//*[@id=\"SHORTCUT_FOCUSABLE_DIV\"]/div[4]/div/div/div/div[2]/div[3]/button");
@@ -33,8 +35,10 @@ class AccountSettingsPage extends PageBase
     By confirmNewPasswordLocator = By.id("password2");
     By logoutEverywhereButtonLocator = By.xpath("/html/body/div/div/div[2]/div/form/fieldset[4]/div/label/div");
     By savePasswordButtonLocator = By.xpath("/html/body/div/div/div[2]/div/form/fieldset[5]/button");
-    By changeGenderButtonLocator = By.xpath("//*[@id=\"AppRouter-main-content\"]/div/div[2]/div[1]/div[3]/div[2]/div/div/div[1]/button");
+    By changeGenderButtonLocator = By.id("b2");
     By genderOptionLocator;
+
+    By languageDropDownLocator = By.id("lang");
     By counrtyDropDownLocator = By.id("country");
     By countryOptionLocator;
     WebElement userProfile;
@@ -52,7 +56,7 @@ class AccountSettingsPage extends PageBase
     WebElement logoutEverywhereButton;
     WebElement savePasswordButton;
     WebElement changeGenderButton;
-
+    WebElement changeLanguageButton;
     public
     void openSettings()
     {
@@ -62,12 +66,6 @@ class AccountSettingsPage extends PageBase
         Clicking(settingsButton);
     }
 
-    public
-    void verifyEmail()
-    {
-        verifyEmailButton = driver.findElement(verifyEmailButtonLocator);
-        Clicking(verifyEmailButton);
-    }
 
     public
     void changeEmail(String newEmail, String password)
@@ -109,17 +107,48 @@ class AccountSettingsPage extends PageBase
         Clicking(logoutButton);
     }
 
-    public
-    void changeGender(String gender)
-    {
+    public void changeGender(String gender) {
         changeGenderButton = driver.findElement(changeGenderButtonLocator);
         Clicking(changeGenderButton);
-        if (gender.equals("Man"))
-            genderOptionLocator = By.xpath("/html/body/div[3]/div/button[2]");
-        else
-            genderOptionLocator = By.xpath("/html/body/div[3]/div/button[1]");
+
+        if (gender.equalsIgnoreCase("Man")) {
+            genderOptionLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/div[2]/button[2]");
+        } else if (gender.equalsIgnoreCase("Woman")) {
+            genderOptionLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/div[2]/button[1]");
+        }
+        else if (gender.equalsIgnoreCase("I Prefer Not To Say")) {
+            genderOptionLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/div[2]/button[5]");
+        }
+        else if (gender.equalsIgnoreCase("Non-Binary")) {
+            genderOptionLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/div[2]/button[3]");
+        }
+        else{
+            genderOptionLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/div[2]/button[4]");
+        }
+
+
         WebElement genderOption = driver.findElement(genderOptionLocator);
         Clicking(genderOption);
+    }
+
+    public void changeLanguage(String language) {
+        changeLanguageButton = driver.findElement(languageDropDownLocator);
+        Clicking(changeLanguageButton);
+        if (language.equalsIgnoreCase("Man")) {
+            genderOptionLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/div[2]/button[2]");
+        } else if (language.equalsIgnoreCase("Woman")) {
+            genderOptionLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/div[2]/button[1]");
+        }
+        else if (language.equalsIgnoreCase("I Prefer Not To Say")) {
+            genderOptionLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/div[2]/button[5]");
+        }
+        else if (language.equalsIgnoreCase("Non-Binary")) {
+            genderOptionLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/div[2]/button[3]");
+        }
+        else{
+            genderOptionLocator = By.xpath("/html/body/div/div/div[2]/div[2]/div/div[2]/div/div[3]/div[2]/div/div/div/div/div[2]/button[4]");
+        }
+
     }
 
     public
