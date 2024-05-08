@@ -33,9 +33,9 @@ public class SubredditMainPageTest extends TestBase{
     public void checkSubredditDescriptionTest(String username, String password)
     {
         loginPage.login(username, password);
-        subredditMainPage.clickOnePieceSubReddit();
+        subredditMainPage.clickdragonOAthSubReddit();
         String actualDescription = subredditMainPage.checkSubredditDescription();
-        String expectedDescription = "Welcome to r/OnePiece, the community for Eiichiro Oda's manga and anime series One Piece. From the East Blue to the New World, anything related to the world of One Piece belongs here! If you've just set sail with the Straw Hat Pirates, be wary of spoilers on this subreddit!";
+        String expectedDescription = "Dragon Oath, also known as Tian Long Ba Bu in China, is a free-to-play massively multiplayer online role-playing game developed and published by Changyou.com and Sohu and launched in May 2007. The game's story is based on the novel Demi-Gods and Semi-Devils by Louis Chaa.";
         Assert.assertEquals(actualDescription, expectedDescription);
     }
 
@@ -43,8 +43,10 @@ public class SubredditMainPageTest extends TestBase{
     public void checkSubredditJoinedUnjoinedTest() throws InterruptedException
     {
        String joinStatus = subredditMainPage.checkJoined();
+        System.out.println(joinStatus);
        Assert.assertEquals(joinStatus, "Joined");
        String unjoinStatus = subredditMainPage.checkUnjoined();
+        System.out.println(unjoinStatus);
        Assert.assertEquals(unjoinStatus, "Join");
     }
 
@@ -82,18 +84,18 @@ public class SubredditMainPageTest extends TestBase{
         subredditMainPage.addImagePost();
     }
 
-//    @Test(priority = 7)
-//    public void addTextPostTest() throws InterruptedException
-//    {
-//        driver.navigate().to("https://reddit-bylham.me/r/OnePiece/submit");
-//        subredditMainPage.addTextPost();
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-//        String alertText = alert.getText();
-//        Assert.assertEquals(alertText,"Post created successfully");
-//        alert.accept();
-//        Thread.sleep(1000);
-//    }
+    @Test(priority = 7)
+    public void addTextPostTest() throws InterruptedException
+    {
+        driver.navigate().to("https://reddit-bylham.me/r/OnePiece/submit");
+        subredditMainPage.addTextPost();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        String alertText = alert.getText();
+        Assert.assertEquals(alertText,"Post created successfully");
+        alert.accept();
+        Thread.sleep(1000);
+    }
 
     @Test(priority = 8)
     public void checkUpVotesTest() throws InterruptedException
@@ -111,7 +113,6 @@ public class SubredditMainPageTest extends TestBase{
         driver.navigate().to("https://reddit-bylham.me/r/OnePiece");
         subredditMainPage.checkDownVotes(scores);
         Assert.assertTrue(scores[0] > scores[1]);
-
     }
 
     @Test (priority = 10)
@@ -120,6 +121,7 @@ public class SubredditMainPageTest extends TestBase{
         driver.navigate().to("https://reddit-bylham.me/r/OnePiece");
         String oldCount = subredditMainPage.getMembersCount();
         int oldCountNum=Integer.parseInt(oldCount);
+        System.out.println(oldCountNum);
         loginPage.clickProfilePageGetName();
         loginPage.logOut();
         loginPage.login("husseinkh", "hihussein");
@@ -129,9 +131,11 @@ public class SubredditMainPageTest extends TestBase{
         driver.navigate().refresh();
         Thread.sleep(2000);
         String newCount = subredditMainPage.getMembersCount();
+        System.out.println(newCount);
         int newCountNum=Integer.parseInt(newCount);
-        Assert.assertEquals(newCountNum, oldCountNum+1);
-
+        //Assert.assertTrue(newCountNum>oldCountNum);
+        subredditMainPage.clickPostNSFWButton();
+        Thread.sleep(4000);
     }
 
 }

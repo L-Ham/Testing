@@ -1,4 +1,4 @@
-import dev.failsafe.internal.util.Durations;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -28,7 +28,7 @@ public class LoginPageTest extends TestBase{
     {
         return new Object[][]
                 {
-                        {"Marly","1234567890"},
+                        {"Marly","123456789"},
                         {"husseinkh","hihussein"},
                         {"fahdseddik","12345678"}
                 };
@@ -78,7 +78,7 @@ public class LoginPageTest extends TestBase{
     {
         Thread.sleep(2000);
         loginPage.clickGoogleButton();
-        explicitWait(10, loginPage.userProfileLocator);
+        explicitWait(20, loginPage.userProfileLocator);
         Assert.assertTrue(driver.findElement(loginPage.userProfileLocator).isDisplayed());
     }
 

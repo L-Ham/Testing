@@ -90,10 +90,13 @@ public RegisterPage (WebDriver driver)
     public String enterAlreadyTakenUsername(String username) throws InterruptedException {
         explicitWait(10, usernameTextBoxLocator);
         usernameTextBox = driver.findElement(usernameTextBoxLocator);
-        usernameTextBox.sendKeys(Keys.chord(Keys.CONTROL, "a"));
-        usernameTextBox.sendKeys(Keys.BACK_SPACE);
-        sendText(usernameTextBox, username);
+        for (int i = 0; i < username.length(); i++) {
+            char c = username.charAt(i);
+            String character = String.valueOf(c);
+            usernameTextBox.sendKeys(character);
+        }
         WebElement errorInvalidUsername = driver.findElement(errorUsernameAlreadyTaken);
+        explicitWait(10, errorUsernameAlreadyTaken);
         while(!Objects.equals(errorInvalidUsername.getText(), "That username is already taken"))
         {
             //Do nothing
