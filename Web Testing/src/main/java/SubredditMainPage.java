@@ -25,7 +25,7 @@ public class SubredditMainPage extends PageBase{
 
     By subredditJoinButton = By.xpath("//*[@id=\"main-container\"]/div/div[1]/section/div/div[2]/div/div/button");
 
-    By onePieceSubReddit = By.xpath("//*[@id=\"sidebar-container\"]/div/nav/div[5]/a[1]");
+    By dragonOAthSubReddit = By.xpath("//*[@id=\"sidebar-container\"]/div/nav/div[5]/a[1]");
 
     By menuItemAddToFav = By.cssSelector("[data-testid='overflow-control-button']");
 
@@ -50,11 +50,13 @@ public class SubredditMainPage extends PageBase{
     By downVoteButton= By.cssSelector("[data-testid='downvote-t3_1bmnuhw']");
     By scoreButton= By.cssSelector("[data-testid='score-t3_1bmnuhw']");
     By membersCount = By.xpath("//*[@id=\"right-sidebar-container\"]/aside/div/div[1]/div[3]/div[1]/span[1]/strong/div");
-    public void clickOnePieceSubReddit()
+
+    By postNSFWButton = By.xpath("//button[contains(@class, 'inline-flex') and contains(@class, 'h-8') and span/span[contains(@class, 'text-xs') and contains(text(), 'View NSFW content')]]");
+    public void clickdragonOAthSubReddit()
     {
-        explicitWait(10, onePieceSubReddit);
-        WebElement onePieceSubRedditElement = driver.findElement(onePieceSubReddit);
-        Clicking(onePieceSubRedditElement);
+        explicitWait(15, dragonOAthSubReddit);
+        WebElement dragonOAthSubRedditElement = driver.findElement(dragonOAthSubReddit);
+        Clicking(dragonOAthSubRedditElement);
     }
     public String checkSubredditDescription()
     {
@@ -92,8 +94,8 @@ public class SubredditMainPage extends PageBase{
     public void checkRemovedFromCommunityList()
     {
         driver.navigate().refresh();
-        explicitWait(10, onePieceSubReddit);
-        WebElement onePieceSubRedditElement = driver.findElement(onePieceSubReddit);
+        explicitWait(10, dragonOAthSubReddit);
+        WebElement onePieceSubRedditElement = driver.findElement(dragonOAthSubReddit);
         Clicking(onePieceSubRedditElement);
     }
 
@@ -142,6 +144,13 @@ public class SubredditMainPage extends PageBase{
         Thread.sleep(2000);
         Clicking(postButtonElement);
 
+    }
+
+    public void clickPostNSFWButton()
+    {
+        explicitWait(10, postNSFWButton);
+        WebElement postNSFWButtonElement = driver.findElement(postNSFWButton);
+        Clicking(postNSFWButtonElement);
     }
 
     public void addImagePost() throws AWTException, InterruptedException, IOException {

@@ -35,7 +35,7 @@ public class LoginPage extends PageBase
     //By innerLoginButtonLocator = By.xpath("//*[@id=\"login-button\"]");
     By loginButtonLocator = By.cssSelector("[data-testid='loginbutton50']");
 
-    By errorInvalidCredentialsLocator = By.cssSelector("[data-testid='username-error']");
+    By errorInvalidCredentialsLocator = By.cssSelector("[data-testid='username-errorr']");
 
     By userProfileLocator = By.xpath("//*[@id=\"header-container\"]/header/nav/div[3]/div[2]/button");
 

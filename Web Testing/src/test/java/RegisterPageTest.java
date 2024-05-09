@@ -22,7 +22,7 @@ public class RegisterPageTest extends TestBase
     public Object[][] getValidData() {
         return new Object[][]
                 {
-                        {"sheriHhh@gmail.com","herd643", "hihussein"}
+                        {"herih@gmail.com","hrd3", "hihussein"}
                 };
     }
 
@@ -31,7 +31,7 @@ public class RegisterPageTest extends TestBase
     {
         return new Object[][]
                 {
-                        {"sehsadia@yahoo.com","hihussein"}
+                        {"shsaa@yahoo.com","hihussein"}
                 };
     }
 
