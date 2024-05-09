@@ -32,7 +32,7 @@ public class HomeScreenTest extends TestBase{
     @DataProvider
     public Object[][] validloginData() {
         return new Object[][]{
-                {"Marly", "1234567890"}
+                {"Marly", "123456789"}
         };
     }
     @Test (dataProvider= "validloginData" ,priority = 1)
@@ -56,7 +56,17 @@ public class HomeScreenTest extends TestBase{
         homeScreen.navigateToChatTab();
         homeScreen.navigateToInboxTab();
         homeScreen.navigateToHomeTab();
-        loginScreen.logout();
+
+    }
+
+    @Test
+    public void scrollTest() throws InterruptedException {
+        loginScreen.clickContinueButton();
+        loginScreen.clickOnLoginButton();
+        loginScreen.login("sehs", "12345678");
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(loginScreen.userProfileXPath)));
+        homeScreen.scroll();
+
     }
 
 

@@ -31,6 +31,7 @@ public class TestBase {
         desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "14.0.0");
         desiredCapabilities.setCapability("appPackage", "com.example.reddit_bel_ham");
         desiredCapabilities.setCapability("appActivity", "com.example.reddit_bel_ham.MainActivity");
+        desiredCapabilities.setCapability("appium:enforceXPath1", true);
         driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723"), desiredCapabilities);
     }
 

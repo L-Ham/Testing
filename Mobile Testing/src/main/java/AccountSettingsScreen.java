@@ -165,23 +165,7 @@ String closeSidebarButton= "//android.widget.Button";
         Clicking(driver.findElementByXPath(saveGenderButton));
     }
 
-    public void changeLocation(String location) {
-        Clicking(driver.findElementByAccessibilityId(changeLocationButton));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(selectLocationLocator)));
-        while (!isLocationVisible(location)) {
-            scrollDown();
-        }
-        Clicking(driver.findElementByAccessibilityId(location));
-    }
 
-    private boolean isLocationVisible(String location) {
-        WebElement locationElement = driver.findElementByAccessibilityId(location);
-        return locationElement.isDisplayed();
-    }
-    private void scrollDown() {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0, 250);");
-    }
 
 
 

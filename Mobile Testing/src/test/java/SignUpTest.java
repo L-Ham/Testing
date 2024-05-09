@@ -28,7 +28,7 @@ public class SignUpTest extends TestBase{
     {
         return new Object[][]
                 {
-                        {"ZiaBash53@gmail.com","hihussein", "ZiaBash53"}
+                        {"ZiaBashaa53@gmail.com","hihussein", "ZiaBashaa53"}
                 };
     }
     @DataProvider
@@ -45,7 +45,7 @@ public class SignUpTest extends TestBase{
     @BeforeGroups("invalidSignUpTests")
     public void beforeInvalidSignUpTests() throws InterruptedException
     {
-        driver.launchApp();
+
         signUpScreen.clickContinueButton();
         signUpScreen.invalidSignupSetup();
     }

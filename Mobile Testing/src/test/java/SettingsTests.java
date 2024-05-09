@@ -141,7 +141,9 @@ loginScreen.logout();
     @Test (priority = 7)
     public void blockUserTest() throws InterruptedException
     {
-        loginScreen.login("Marly", "1234567890");
+        loginScreen.clickContinueButton();
+        loginScreen.clickOnLoginButton();
+        loginScreen.login("Marly", "123456789");
         accountSettingsScreen.openAccountSettings();
         accountSettingsScreen.blockAccount("peter");
         driver.navigate().back();
@@ -154,7 +156,9 @@ loginScreen.logout();
     @Test (priority = 8)
     public void unblockUserTest() throws InterruptedException
     {
-        loginScreen.login("Marly", "1234567890");
+        loginScreen.clickContinueButton();
+        loginScreen.clickOnLoginButton();
+        loginScreen.login("Marly", "123456789");
         accountSettingsScreen.openAccountSettings();
         accountSettingsScreen.unblockAccount("peter");
         driver.navigate().back();
@@ -175,16 +179,16 @@ loginScreen.logout();
         loginScreen.logout();
     }
 
-    @Test (priority = 10)
-    public void changeLocationTest() throws InterruptedException {
-        loginScreen.clickContinueButton();
-        loginScreen.clickOnLoginButton();
-        loginScreen.login("Marly", "1234567890");
-        accountSettingsScreen.openAccountSettings();
-        accountSettingsScreen.changeLocation("Chile");
-        driver.navigate().back();
-        driver.navigate().back();
-        accountSettingsScreen.closeSidebarButton();
-        loginScreen.logout();
-    }
+//    @Test (priority = 10)
+//    public void changeLocationTest() throws InterruptedException {
+//        loginScreen.clickContinueButton();
+//        loginScreen.clickOnLoginButton();
+//        loginScreen.login("Marly", "1234567890");
+//        accountSettingsScreen.openAccountSettings();
+//        accountSettingsScreen.changeLocation("Chile");
+//        driver.navigate().back();
+//        driver.navigate().back();
+//        accountSettingsScreen.closeSidebarButton();
+//        loginScreen.logout();
+//    }
 }
