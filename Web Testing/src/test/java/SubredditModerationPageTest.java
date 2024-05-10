@@ -8,11 +8,10 @@ public class SubredditModerationPageTest extends TestBase
     SubredditModerationPage subredditModerationPage;
     LoginPage loginPage;
     @BeforeTest
-    public void setUp()
-    {
+    public void setUp() throws InterruptedException {
         subredditModerationPage = new SubredditModerationPage(driver);
         loginPage = new LoginPage(driver);
-        loginPage.login("jeniffer", "123456789");
+        loginPage.login("Rana", "12345678");
         subredditModerationPage.goToRealPPl();
     }
 

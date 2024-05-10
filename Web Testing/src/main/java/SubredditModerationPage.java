@@ -12,19 +12,19 @@ public class SubredditModerationPage extends PageBase{
     {
         super(driver);
     }
-    By realPPLSubreddit = By.xpath("//*[@id=\"sidebar-container\"]/div/nav/div[5]/a[1]");
+    By realPPLSubreddit = By.xpath("//*[@id=\"header-container\"]/div/div/div[1]/div/nav/div[5]/a[1]");
 
-    By editSubredditDescription = By.xpath("//*[@id=\"right-sidebar-container\"]/aside/div/div[1]/button");
+    By editSubredditDescription = By.xpath("//*[@id=\"right-sidebar-container-12322134\"]/aside/div/div[1]/button");
     By membersNickNameRead =  By.cssSelector("[data-testid='community-members-p-1']");
     By membersNicknameTextBox = By.id("membersNickname");
     By viewingNickNameRead= By.cssSelector("[data-testid='community-members-p-2']");
     By viewingNicknameTextBox = By.id("viewingNickname");
     By CommunityDescriptionRead = By.cssSelector("[data-testid='community-description-inner-div']");
     By CommunityDescriptionTextBox = By.id("communityDescription");
-    By submitButton = By.xpath("//*[@id=\"right-sidebar-container\"]/div/form/div[5]/button");
+    By submitButton = By.cssSelector("[data-testid='submit-button']");
     By createPostButton = By.cssSelector("[data-testid='create-post-button']");
 
-    By rulesEditButton = By.xpath("//*[@id=\"right-sidebar-container\"]/aside/div/div[2]/button");
+    By rulesEditButton = By.xpath("//*[@id=\"right-sidebar-container-12322134\"]/aside/div/div[2]/button");
 
     By addRuleButton= By.xpath("//*[@id=\"main-container\"]/div/div/div[1]/div[2]/button[2]");
     By ruleTextBox = By.xpath("//*[@id=\"main-container\"]/div/div/div[1]/div[4]/section/div/label[1]/textarea");
@@ -51,7 +51,7 @@ public class SubredditModerationPage extends PageBase{
 
     By addNewReasonSubmit= By.xpath("//*[@id=\"main-container\"]/div/div/div[1]/div[3]/section/footer/button[1]");
     By editWidgetButton = By.xpath("//button[contains(@class, 'commset-button-small') and contains(@class, 'commset-button-primary') and contains(@class, 'commset-button') and contains(@class, 'mt-5') and contains(@class, 'inline-flex') and contains(@class, 'w-full') and contains(@class, 'items-center') and contains(@class, 'justify-center')]");
-    By addBookMarkButton=By.xpath("//*[@id=\"right-sidebar-container\"]/div/div/button[2]");
+    By addBookMarkButton=By.xpath("//*[@id=\"right-sidebar-container-12322134\"]/div/div/button[2]");
     By bookmarkTitleTextBox=By.id("widgetName");
     By bookmarkDescriptionTextBox=By.id("description");
     By bookmarkNameTextBox=By.id("bookmarkName");
@@ -60,11 +60,9 @@ public class SubredditModerationPage extends PageBase{
     By addBannerButton=By.xpath("//*[@id=\"right-sidebar-container\"]/aside/div/div[16]/div[3]/div[2]/ul/li[2]");
     By addBannerImage = By.xpath("//*[@id=\"right-sidebar-container\"]/aside/div/div[16]/div[3]/div[2]/input");
 
-    void goToRealPPl()
-    {
-        explicitWait(15, realPPLSubreddit);
-        WebElement realPPLSubredditElement = driver.findElement(realPPLSubreddit);
-        Clicking(realPPLSubredditElement);
+    void goToRealPPl() throws InterruptedException {
+        Thread.sleep(3000);
+        driver.navigate().to("https://reddit-bylham.me/r/RealPPL");
     }
     void checkEditSubredditDescription(String newDescription, String newMembersNickName, String newViewingNickName) throws InterruptedException {
         explicitWait(15,editSubredditDescription);

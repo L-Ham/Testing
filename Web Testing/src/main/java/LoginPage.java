@@ -56,6 +56,8 @@ public class LoginPage extends PageBase
     By sendEmailRecoverPasswordButtonLocator = By.cssSelector("[data-testid='resetpasswordbutton']");
 
     By recoverPasswordMessageLocator = By.cssSelector("[data-testid='resetpasswordmessage']");
+    By profileLocator=By.cssSelector("[data-testid='profile-icon-button']");
+    By loginButtonInLoggedOUtView= By.xpath("//*[@id=\"header-container\"]/header/nav/div[3]/span[2]/a");
 
     WebElement recoverPasswordEmail;
 
@@ -80,6 +82,18 @@ public class LoginPage extends PageBase
     WebElement usernameTextBox;
     WebElement passwordTextBox;
     WebElement loginButton;
+
+    public void clickOnLogOut()
+    {
+        explicitWait(10, userProfileLocator);
+        userProfile = driver.findElement(userProfileLocator);
+        Clicking(userProfile);
+        explicitWait(10, logoutButtonLocator);
+        logoutButton = driver.findElement(logoutButtonLocator);
+        Clicking(logoutButton);
+        explicitWait(15, loginButtonInLoggedOUtView);
+        Clicking(driver.findElement(loginButtonInLoggedOUtView));
+    }
 
     public void clickGoogleButton() throws InterruptedException
     {

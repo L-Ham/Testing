@@ -139,7 +139,7 @@ public class SubredditMainPage extends PageBase{
         sendText(addTitleTextBoxElement, "This is a test post");
         Thread.sleep(2000);
         WebElement addPostTextElement = driver.findElement(addPostText);
-        sendText(addPostTextElement, "HI ENG HISAAAA!!!");
+        sendText(addPostTextElement, "HI ENG HISAAAA!!");
         WebElement postButtonElement = driver.findElement(postButton);
         Thread.sleep(2000);
         Clicking(postButtonElement);

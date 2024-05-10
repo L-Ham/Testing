@@ -28,4 +28,9 @@ public class PageBase {
     {
         new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+    public void implicitWait(int seconds)
+    {
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
+    }
 }
