@@ -30,15 +30,15 @@ public class LoginScreen extends ScreenBase
     String userProfileXPath= "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]";
 
     MobileElement accounts;
-    String accountsXpath="//android.view.View[@content-desc=\"u/Marly\"]";
+    String accountsXpath="//android.view.View[@content-desc=\"u/itssosoyall\"]";
 
     MobileElement logoutFirst;
     String logoutFirstXpath="//android.view.View[@content-desc=\"P\n" +
-            "u/Marly\"]/android.widget.Button";
+            "u/itssosoyall\"]/android.widget.Button";
 
     MobileElement logoutSecond;
 
-    String logoutSecondXpath="//android.view.View[@content-desc=\"u/Marly\n" +
+    String logoutSecondXpath="//android.view.View[@content-desc=\"u/itssosoyall\n" +
             "Logout\"]";
 
     String invalidUsernameOrPassword="//android.view.View[@content-desc=\"Invalid username/email or password\"]";

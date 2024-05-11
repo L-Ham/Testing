@@ -50,7 +50,7 @@ public class MessagingTest extends TestBase {
         test = extent.createTest("Sending a Message to an Existing Thread Test");
         loginScreen.clickContinueButton();
         loginScreen.clickOnLoginButton();
-        loginScreen.login("sehs", "12345678");
+        loginScreen.login("itssosoyall", "123456789");
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(loginScreen.userProfileXPath)));
         messaging.navigateToInboxTab();
         Thread.sleep(2000);
@@ -58,13 +58,13 @@ public class MessagingTest extends TestBase {
         test.log(result ? Status.PASS : Status.FAIL, "Test Result");
         Assert.assertTrue(result);
         Thread.sleep(2000);
-        messaging.logout("sehs");
+        messaging.logout("itssosoyall");
     }
 
     @Test(priority = 2)
     public void sendNewMessageTest() throws InterruptedException {
         test = extent.createTest("Sending a New Message Test");
-        loginScreen.login("sehs", "12345678");
+        loginScreen.login("itssosoyall", "123456789");
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(loginScreen.userProfileXPath)));
         messaging.navigateToInboxTab();
         Thread.sleep(2000);
@@ -72,13 +72,13 @@ public class MessagingTest extends TestBase {
         test.log(result ? Status.PASS : Status.FAIL, "Test Result");
         Assert.assertTrue(result);
         Thread.sleep(2000);
-        messaging.logout("sehs");
+        messaging.logout("itssosoyall");
     }
 
     @Test(priority = 3)
     public void receiverNotFoundTest() throws InterruptedException {
         test = extent.createTest("Receiver Not Found Test");
-        loginScreen.login("sehs", "12345678");
+        loginScreen.login("itssosoyall", "123456789");
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(loginScreen.userProfileXPath)));
         messaging.navigateToInboxTab();
         Thread.sleep(2000);
@@ -87,7 +87,7 @@ public class MessagingTest extends TestBase {
         Assert.assertTrue(result);
         messaging.clickExit();
         Thread.sleep(2000);
-messaging.logout("sehs");
+messaging.logout("itssosoyall");
 
     }
 
@@ -98,7 +98,7 @@ messaging.logout("sehs");
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(loginScreen.userProfileXPath)));
         messaging.navigateToInboxTab();
         Thread.sleep(2000);
-        boolean result = messaging.checkMessageArrival("sehs", "Heeyyy jeennnyyyyy");
+        boolean result = messaging.checkMessageArrival("itssosoyall", "Heeyyy jeennnyyyyy");
         test.log(result ? Status.PASS : Status.FAIL, "Test Result");
         Assert.assertTrue(result);
         messaging.logout("jeniffer");
@@ -111,7 +111,7 @@ messaging.logout("sehs");
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(loginScreen.userProfileXPath)));
         messaging.navigateToInboxTab();
         Thread.sleep(2000);
-        boolean result = messaging.checkMessageArrival("sehs", "Ahla messaging mel cross wl back teams");
+        boolean result = messaging.checkMessageArrival("itssosoyall", "Ahla messaging mel cross wl back teams");
         test.log(result ? Status.PASS : Status.FAIL, "Test Result");
         Assert.assertTrue(result);
         messaging.logout("dani");
