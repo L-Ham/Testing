@@ -12,7 +12,7 @@ public class MessagesPageTest extends TestBase
     public void getMessagesPage() throws InterruptedException {
         messagesPage = new MessagesPage(driver);
         loginPage = new LoginPage(driver);
-        loginPage.login("jeniffer", "123456789");
+        loginPage.login("ChatTrial", "12345678");
         messagesPage.goToSendMessages();
 
     }
@@ -22,7 +22,7 @@ public class MessagesPageTest extends TestBase
     {
         return new Object[][]
                 {
-                        {"sehs", "Greetingss", "Hello, how aree you sehs?"}
+                        {"ChatTrial2", "Greetingss", "Hello, how aree you sehs?"}
                 };
     }
 
@@ -35,10 +35,11 @@ public class MessagesPageTest extends TestBase
 
 
     @Test( dependsOnMethods= "sendMessage", dataProvider = "getValidData" ,priority = 2)
-    public void checkMessageInSentMessages(String username, String messageText, String messageSubject) throws InterruptedException {
+    public void checkMessageInSentMessages(String username, String messageText, String messageSubject) throws InterruptedException
+    {
         loginPage.clickOnLogOut();
         //driver.get("https://reddit-bylham.me/login");
-        loginPage.login("sehs", "12345678");
+        loginPage.login("ChatTrial2", "12345678");
         messagesPage.goToSentMessages();
         String message=messagesPage.checkMessageInSentMessages(messageText);
         Assert.assertEquals(message, messageText);
@@ -47,7 +48,7 @@ public class MessagesPageTest extends TestBase
     @Test (priority = 3)
     public void checkUnreadTab() throws InterruptedException {
         String message=messagesPage.goToUnreadMessages();
-        Assert.assertEquals(message, "there doesn't seem to be anything here");
+        Assert.assertEquals(message, "bug"); //there doesn't seem to be anything here
     }
 
     @Test (priority = 4)

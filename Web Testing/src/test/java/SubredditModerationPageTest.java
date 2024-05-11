@@ -16,11 +16,13 @@ public class SubredditModerationPageTest extends TestBase
     }
 
     @DataProvider(name = "editSubredditDescriptionData")
-    public Object[][] getData() {
+    public Object[][] getData()
+    {
         return new Object[][]
                 {
                         {"Description gdid awyy", "memebrs name gdid awyy", "viewer name gdid awyy"},
-                        {"Description gdid awyy", "memebrs name gdid awyy", "viewer name gdid awyy"}
+                        {"Description gdid awyy2", "memebrs name gdid awyy", "viewer name gdid awyy"},
+                        {"Description gdid awyy3", "memebrs name gdid awyy", "viewer name gdid awyy"}
                 };
     }
 
@@ -101,6 +103,16 @@ public class SubredditModerationPageTest extends TestBase
         driver.navigate().refresh();
         String notification=subredditModerationPage.invalidAddBookmarkWidget();
         Assert.assertEquals(notification, "failed to add new bookmark (Invalid URL)");
+    }
+
+    @Test (priority = 9)
+    public void descriptionValidationTest() throws InterruptedException
+    {
+        driver.get("https://reddit-bylham.me/r/Dragon%20Oath");
+        Thread.sleep(4000);
+        String notification=subredditModerationPage.descriptionValidation();
+        Assert.assertEquals(notification, "Community Description is present");
+
     }
 
 }

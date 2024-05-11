@@ -22,7 +22,7 @@ public class SubredditCreationAndFlowTest extends TestBase
     public Object[][] getData() {
         return new Object[][]
                 {
-                        {"CommunityHadidyy","Title from hadidy", "hadidyyyyy"}
+                        {"CommunityHadidyyNew","Title from hadidy", "hadidyyyyy"}
                 };
     }
 

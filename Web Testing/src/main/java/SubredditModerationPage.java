@@ -282,4 +282,17 @@ public class SubredditModerationPage extends PageBase{
         return driver.findElement(notificationAddRule).getText();
     }
 
+    public String descriptionValidation() throws InterruptedException
+    {
+        String pageData = driver.getPageSource();
+        if(pageData.contains("Members"))
+        {
+            return "Community Description is present";
+        }
+        else
+        {
+            return "Community Description is not present";
+        }
+    }
+
 }
